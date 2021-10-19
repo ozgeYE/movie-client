@@ -1,0 +1,38 @@
+<div class="add-movie">
+  <mat-card>
+    <mat-card-content>
+      <input [(ngModel)]="searchText" (keyup)="searchMovie()" placeholder="Movie Name">
+      <div *ngIf="!movieList || movieList.length <= 0" class="no-content">
+        No content please enter movie name to searchbar
+      </div>
+      <ul class="search-list" *ngIf="movieList && movieList.length > 0">
+        <li *ngFor="let movie of movieList" class="movie-list"
+            [ngClass]="[selectedMovie?.imdbID === movie.imdbID ? 'selected' : '']" (click)="selectMovie(movie)">
+          <img [src]="movie.Poster" alt="poster"/>
+          <div>{{movie.Title}}</div>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <div *ngIf="!selectedMovie">
+      Please search and select a movie for add
+    </div>
+    <mat-card-content *ngIf="selectedMovie">
+      <h2>Add Movie</h2>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="title" [value]="selectedMovie.Title" disabled>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="poster" [value]="selectedMovie.Poster" disabled>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="score" [(ngModel)]="selectedMovie.imdbRating" required
+               (keypress)="checkScore($event)"/>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="saveMovie()" [disabled]="!selectedMovie.imdbRating">Add Movie
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
+

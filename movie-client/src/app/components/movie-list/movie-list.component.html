@@ -1,0 +1,22 @@
+<div class="movie-container" (scroll)="onScroll($event)">
+  <div class="control">
+    <mat-form-field appearance="fill">
+      <mat-label>Sort the movies by</mat-label>
+      <mat-select [(value)]="sortBy" (valueChange)="sortMovies()">
+        <mat-option value="">None</mat-option>
+        <mat-option value="desc">increase</mat-option>
+        <mat-option value="asc">decrease</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="search" appearance="fill">
+      <mat-label>Search Movie</mat-label>
+      <input matInput placeholder="Enter search text" [(ngModel)]="searchKeyword" (keyup)="searchMovie()">
+    </mat-form-field>
+  </div>
+  <div class="no-content" *ngIf="movies.length <= 0">
+    Henüz içerik girilmedi
+  </div>
+  <div class="movie-list">
+    <app-movie-item *ngFor="let movie of movies" [movie]="movie" (deleteItem)="deleteMovie($event)"></app-movie-item>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<mat-card *ngIf="selectedMovie">
+  <mat-card-content>
+    <h2>Edit Movie</h2>
+    <mat-form-field class="full-width-input">
+      <input matInput placeholder="title" [value]="selectedMovie.Title" disabled>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input matInput placeholder="poster" [value]="selectedMovie.Poster" disabled>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input matInput placeholder="score" [(ngModel)]="selectedMovie.imdbRating" (keypress)="checkScore($event)"/>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="updateMovie(selectedMovie)" [disabled]="!selectedMovie.imdbRating">Save</button>
+  </mat-card-content>
+</mat-card>
+

@@ -1,0 +1,18 @@
+<div class="movie-item">
+  <div class="flip-card">
+    <div class="icon" (click)="deleteMovie(movie)">
+      <mat-icon>delete</mat-icon>
+    </div>
+    <div class="poster">
+      <img src="{{movie.Poster}}" loading="lazy" alt="Avatar" class="image">
+    </div>
+    <div class="layout" (click)="goEditMovie(movie)">
+      <div>{{movie.Title}}</div>
+      <div>{{movie.imdbRating}}</div>
+    </div>
+  </div>
+</div>
+
+<ng-template #skeleton>
+  <div [@fadeIn] style="width:250px;height:350px;"></div>
+</ng-template>

@@ -1,0 +1,41 @@
+.add-movie {
+  display: flex;
+
+  mat-card {
+    width: 40%;
+    margin: 2em auto;
+    text-align: center;
+
+    .no-content {
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-list {
+      height: 450px;
+      overflow-y: scroll;
+
+      .selected {
+        background: rgba(85, 123, 206, 0.51);
+      }
+
+      img {
+        width: 60px;
+        height: 80px;
+      }
+    }
+
+    .movie-list {
+      display: flex;
+      align-items: center;
+      border: 1px solid black;
+    }
+
+    mat-form-field {
+      display: block;
+    }
+  }
+}
+

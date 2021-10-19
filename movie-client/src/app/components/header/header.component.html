@@ -1,0 +1,10 @@
+<div class="header">
+  <div class="left" (click)="goMovieList()">
+    <mat-icon class="icon">movie_filter</mat-icon>
+    <div class="title">Movie App</div>
+  </div>
+  <div *ngIf="isAuthExist()">
+    <button mat-raised-button (click)="goAddMovie()">Film Ekle</button>
+    <button mat-raised-button (click)="logout()">Logout</button>
+  </div>
+</div>
